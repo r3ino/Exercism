@@ -49,7 +49,7 @@ def elapsed_time_in_minutes(number_of_layers, elapsed_bake_time):
     :param elapsed_bake_time: int - baking time already elapsed.
     :return: int - total elapsed time (in minutes) derived from 'number_of_layers' and 'elapsed_bake_time'.
 
-    Function pensi that takes the number of layers in the lasagna and the actual minutes the lasagna has been in the oven as
+    Function that takes the number of layers in the lasagna and the actual minutes the lasagna has been in the oven as
     arguments and returns how many minutes have elapsed based on the `number_of_layers` and `elapsed_bake_time`.
     """
 
