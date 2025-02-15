@@ -1,5 +1,7 @@
 def convert(number):
-    pass
+    sound = ''
+    divider = [3,5,7]
+    drop_sound = ['Pling','Plang','Plong']
 
     for i in range(3):
         if number % divider[i] == 0:
