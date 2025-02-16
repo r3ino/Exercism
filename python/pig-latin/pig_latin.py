@@ -1,35 +1,34 @@
 def translate(text):
 
     first_letters = ('a','e','i','o','u','xr','yt')
-    vowels = 'aeiou'
-    consonants = ''
+    yowels = ('a','e','i','o','u','y')
+    words = text.split()
+    translated_text = ''
 
-    if text.startswith(first_letters):
-        text += 'ay'
-        return text
+    for word in words:
+        if word.startswith(first_letters):
+            word += 'ay'
+            translated_text += ' '+ word
 
-    if not text.startswith(first_letters) and not 'qu' in text:
-        for letter in text:
-            if letter not in vowels:
-                consonants += letter
+        else:
+            position_yowels = [word.find(vokal) for vokal in yowels if
+                               word.find(vokal) != -1 and (vokal != 'y' or word.find(vokal) > 0)]
+            position_yowel = min(position_yowels) if position_yowels else -1
+
+            position_qu = word.find('qu')
+
+            if position_yowel != -1 and (position_qu == -1 or position_yowel < position_qu):
+                front_part = word[:position_yowel]
+                back_part = word[position_yowel:]
+
+                word = back_part + front_part + 'ay'
+
             else:
-                break
-        remaining_word = text[len(consonants):]
-        return remaining_word + consonants + 'ay'
+                front_part = text[:position_qu + 2]
+                back_part = text[position_qu + 2:]
 
-    if 'qu' in text:
-        position_qu = text.find('qu')
+                word = back_part + front_part + 'ay'
 
-        if text[position_qu - 1] not in vowels:
-            front_part = text[:position_qu + 2]
-            back_part = text[position_qu + 2:]
+            translated_text += ' ' + word
 
-            return back_part + front_part + 'ay'
-
-        for letter in text:
-            if letter not in vowels:
-                consonants += letter
-            else:
-                break
-        remaining_word = text[len(consonants):]
-        return remaining_word + consonants + 'ay'
+    return translated_text.strip()
