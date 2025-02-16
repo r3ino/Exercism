@@ -24,8 +24,8 @@ def translate(text):
                 word = back_part + front_part + 'ay'
 
             else:
-                front_part = text[:position_qu + 2]
-                back_part = text[position_qu + 2:]
+                front_part = word[:position_qu + 2]
+                back_part = word[position_qu + 2:]
 
                 word = back_part + front_part + 'ay'
 
